@@ -1,16 +1,37 @@
 <nav class="navbar">
     <ul class="links">
-        <a class="logo"><img src="../../../assets/images/logo.svg" alt="logo" /> </a>
-        <a>Collections</a>
-        <a>Men</a>
-        <a>Women</a>
-        <a>About</a>
-        <a>Contact</a>
+        <a routerLink="/" class="logo"><img src="../../../assets/images/logo.svg" alt="logo" /> </a>
+        <a routerLink="/collections" routerLinkActive="active_link">Collections</a>
+        <a routerLink="/men" routerLinkActive="active_link">Men</a>
+        <a routerLink="/women" routerLinkActive="active_link">Women</a>
+        <a routerLink="/about" routerLinkActive="active_link">About</a>
+        <a routerLink="/contact" routerLinkActive="active_link">Contact</a>
     </ul>
 
     <div class="icons-right">
-        <button><img src="../../../assets/images/icon-cart.svg" alt="cart" /> </button>
+        <div class="cart-container" (click)="toggleCartFunc()"><img src="../../../assets/images/icon-cart.svg"
+                alt="cart" />
+            <p class="cart-bubble"> {{qtyValue}}</p>
+        </div>
         <div class="user"><img src="../../../assets/images/image-avatar.png" alt="logo" /> </div>
-    </div>
 
+        <div [ngClass]="toggleCart=== true ? 'cart' : 'cart inactive'">
+            <h3>Cart</h3>
+            <div class="empty" *ngIf="qtyValue===0">
+                <h2>Your cart is empty</h2>
+            </div>
+
+            <div *ngIf="qtyValue > 0">
+
+                <div class="cart-details">
+                    <img class="picture" src="../../../assets/images/image-product-1-thumbnail.jpg">
+                    <h4>Fall Limited Edition Sneakers <br> $125.00 x {{qtyValue}} {{qtyValue * 125}}.00</h4>
+                    <h4></h4>
+                    <img class="trashcan" (click)="emptyCartQty()" src="../../../assets/images/icon-delete.svg">
+                </div>
+                <button class="checkout-btn" type="button">Checkout</button>
+            </div>
+
+        </div>
+    </div>
 </nav>

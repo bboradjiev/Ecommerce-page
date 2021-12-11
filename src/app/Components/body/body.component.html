@@ -1,0 +1,35 @@
+<div class="body-section">
+    <div class="images-section">
+        <img class="main-img" src="../../../assets/images/image-product-{{numImg}}.jpg" alt="img">
+        <div class="small-images-section">
+            <img (click)="chosenImg(1)" class="secondary-img" src="../../../assets/images/image-product-1-thumbnail.jpg"
+                alt="img">
+            <img (click)="chosenImg(2)" class="secondary-img" src="../../../assets/images/image-product-2-thumbnail.jpg"
+                alt="img">
+            <img (click)="chosenImg(3)" class="secondary-img" src="../../../assets/images/image-product-3-thumbnail.jpg"
+                alt="img">
+            <img (click)="chosenImg(4)" class="secondary-img" src="../../../assets/images/image-product-4-thumbnail.jpg"
+                alt="img">
+        </div>
+    </div>
+    <div class="text-section">
+        <h5 class="sneaker-text">SNEAKER COMPANY</h5>
+        <h1 class="sneaker-title">Fall Limited Edition Sneakers</h1>
+        <p class="sneaker-description">These low-profile sneakers are your perfect casual wear companion. Featuring a
+            durable rubber outer sole,
+            they’ll withstand everything the weather can offer.</p>
+        <h2 class="sneaker-price">$125.00 <p class="sneaker-discount">50%</p>
+        </h2>
+        <h4 class="sneaker-old">$250.00</h4>
+
+        <form class="form">
+            <button class="increment-buttons" type="button" (click)="decreaseButton()">-</button>
+            <input type="number" value="{{initialQty}}" min="0" readonly>
+            <button class="increment-buttons" type="button" (click)="increaseButton()">+</button>
+            <button (click)="cartQty()" *ngIf="qtyValue===0" class="add-button" type="button"> <img
+                    src="../../../assets/images/icon-cart.svg">Add to cart</button>
+            <button (click)="emptyCartQty()" *ngIf="qtyValue>0" class="add-button" type="button"> <img
+                    src="../../../assets/images/icon-cart.svg">Empty Cart</button>
+        </form>
+    </div>
+</div>
