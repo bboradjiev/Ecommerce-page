@@ -10,7 +10,7 @@ import { CartServiceService } from 'src/app/cart-service.service';
 export class HeaderComponent implements OnInit {
   qtySrc!: Subject<number>;
   public qtyValue: number = 0;
-  toggleCart = true;
+  toggleCart = false;
 
   constructor(private cart: CartServiceService) {
     this.qtySrc = this.cart.qtySource;

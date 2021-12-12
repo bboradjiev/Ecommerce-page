@@ -1,6 +1,7 @@
 <div class="body-section">
     <div class="images-section">
-        <img class="main-img" src="../../../assets/images/image-product-{{numImg}}.jpg" alt="img">
+        <img (click)="toggleModal()" class="main-img" src="../../../assets/images/image-product-{{numImg}}.jpg"
+            alt="img">
         <div class="small-images-section">
             <img (click)="chosenImg(1)" class="secondary-img" src="../../../assets/images/image-product-1-thumbnail.jpg"
                 alt="img">
@@ -31,5 +32,29 @@
             <button (click)="emptyCartQty()" *ngIf="qtyValue>0" class="add-button" type="button"> <img
                     src="../../../assets/images/icon-cart.svg">Empty Cart</button>
         </form>
+    </div>
+
+    <div (click)="toggleModal()" [ngClass]="showModal === true ? 'modal' : 'modal close-modal'">
+        <div class="img-container">
+            <button (click)="prevImg()" (click)="toggleModal()" class="arrow left"> <img
+                    src="../../../assets/images/icon-previous.svg">
+            </button>
+            <img (click)="toggleModal()" class="main-img" src="../../../assets/images/image-product-{{numImg}}.jpg"
+                alt="img">
+            <button (click)="nextImg()" (click)="toggleModal()" class="arrow right"> <img
+                    src="../../../assets/images/icon-next.svg">
+            </button>
+        </div>
+
+        <div class="small-images-section">
+            <img (click)="toggleModal()" (click)="chosenImg(1)" class="secondary-img"
+                src="../../../assets/images/image-product-1-thumbnail.jpg" alt="img">
+            <img (click)="toggleModal()" (click)="chosenImg(2)" class="secondary-img"
+                src="../../../assets/images/image-product-2-thumbnail.jpg" alt="img">
+            <img (click)="toggleModal()" (click)="chosenImg(3)" class="secondary-img"
+                src="../../../assets/images/image-product-3-thumbnail.jpg" alt="img">
+            <img (click)="toggleModal()" (click)="chosenImg(4)" class="secondary-img"
+                src="../../../assets/images/image-product-4-thumbnail.jpg" alt="img">
+        </div>
     </div>
 </div>

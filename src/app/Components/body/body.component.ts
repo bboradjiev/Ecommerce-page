@@ -10,6 +10,7 @@ import { CartServiceService } from 'src/app/cart-service.service';
 export class BodyComponent implements OnInit {
   numImg = 1;
   initialQty: number = 0;
+  showModal = true;
 
   qtySrc!: Subject<number>;
   public qtyValue: number = 0;
@@ -43,5 +44,20 @@ export class BodyComponent implements OnInit {
   emptyCartQty() {
     this.initialQty = 0;
     this.cart.changeQty(this.initialQty);
+  }
+
+  toggleModal() {
+    this.showModal = !this.showModal;
+  }
+
+  nextImg() {
+    if (this.numImg < 4) {
+      this.numImg++;
+    }
+  }
+  prevImg() {
+    if (this.numImg > 1) {
+      this.numImg--;
+    }
   }
 }
