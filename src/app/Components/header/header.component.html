@@ -1,21 +1,27 @@
+
 <nav class="navbar">
     <ul class="links">
+        <img (click)="toggleNavFunc()" class="hamburger" src="../../../assets/images/icon-menu.svg">
+
         <a routerLink="/" class="logo"><img src="../../../assets/images/logo.svg" alt="logo" /> </a>
-        <a routerLink="/collections" routerLinkActive="active_link">Collections</a>
-        <a routerLink="/men" routerLinkActive="active_link">Men</a>
-        <a routerLink="/women" routerLinkActive="active_link">Women</a>
-        <a routerLink="/about" routerLinkActive="active_link">About</a>
-        <a routerLink="/contact" routerLinkActive="active_link">Contact</a>
+        <div [ngClass]="toggleNav === true ? 'nav-links' : 'nav-links inactive'">
+            <img (click)="toggleNavFunc()" class="close" src="../../../assets/images/icon-close.svg">
+            <a (click)="toggleNavFunc()" routerLink="/collections" routerLinkActive="active_link">Collections</a>
+            <a (click)="toggleNavFunc()" routerLink="/men" routerLinkActive="active_link">Men</a>
+            <a (click)="toggleNavFunc()" routerLink="/women" routerLinkActive="active_link">Women</a>
+            <a (click)="toggleNavFunc()" routerLink="/about" routerLinkActive="active_link">About</a>
+            <a (click)="toggleNavFunc()" routerLink="/contact" routerLinkActive="active_link">Contact</a>
+        </div>
     </ul>
 
     <div class="icons-right">
         <div class="cart-container" (click)="toggleCartFunc()"><img src="../../../assets/images/icon-cart.svg"
                 alt="cart" />
-            <p class="cart-bubble"> {{qtyValue}}</p>
+            <p *ngIf="qtyValue > 0" class="cart-bubble"> {{qtyValue}}</p>
         </div>
         <div class="user"><img src="../../../assets/images/image-avatar.png" alt="logo" /> </div>
 
-        <div [ngClass]="toggleCart=== true ? 'cart' : 'cart inactive'">
+        <div  [ngClass]="toggleCart === true ? 'cart' : 'cart inactive'">
             <h3>Cart</h3>
             <div class="empty" *ngIf="qtyValue===0">
                 <h2>Your cart is empty</h2>
@@ -25,13 +31,12 @@
 
                 <div class="cart-details">
                     <img class="picture" src="../../../assets/images/image-product-1-thumbnail.jpg">
-                    <h4>Fall Limited Edition Sneakers <br> $125.00 x {{qtyValue}} {{qtyValue * 125}}.00</h4>
+                    <h4>Fall Limited Edition Sneakers <br> $125.00 x {{qtyValue}} - {{qtyValue * 125}}.00</h4>
                     <h4></h4>
                     <img class="trashcan" (click)="emptyCartQty()" src="../../../assets/images/icon-delete.svg">
                 </div>
-                <button class="checkout-btn" type="button">Checkout</button>
+                <button class="checkout-btn" (click)="toggleCartFunc()" routerLink="/checkout" type="button">Checkout</button>
             </div>
-
         </div>
     </div>
 </nav>

@@ -1,7 +1,13 @@
 <div class="body-section">
     <div class="images-section">
+        <button (click)="prevImgMobile()" class="arrow left">
+            <img src="../../../assets/images/icon-previous.svg">
+        </button>
         <img (click)="toggleModal()" class="main-img" src="../../../assets/images/image-product-{{numImg}}.jpg"
             alt="img">
+        <button (click)="nextImgMobile()" class="arrow right">
+            <img src="../../../assets/images/icon-next.svg">
+        </button>
         <div class="small-images-section">
             <img (click)="chosenImg(1)" class="secondary-img" src="../../../assets/images/image-product-1-thumbnail.jpg"
                 alt="img">
@@ -19,14 +25,19 @@
         <p class="sneaker-description">These low-profile sneakers are your perfect casual wear companion. Featuring a
             durable rubber outer sole,
             they’ll withstand everything the weather can offer.</p>
-        <h2 class="sneaker-price">$125.00 <p class="sneaker-discount">50%</p>
-        </h2>
-        <h4 class="sneaker-old">$250.00</h4>
+        <div class="text-prices">
+            <h2 class="sneaker-price">$125.00 <p class="sneaker-discount">50%</p>
+            </h2>
+            <h4 class="sneaker-old">$250.00</h4>
+        </div>
+
 
         <form class="form">
-            <button class="increment-buttons" type="button" (click)="decreaseButton()">-</button>
-            <input type="number" value="{{initialQty}}" min="0" readonly>
-            <button class="increment-buttons" type="button" (click)="increaseButton()">+</button>
+            <div class="container">
+                <button class="increment-buttons" type="button" (click)="decreaseButton()">-</button>
+                <p class="input">{{initialQty}}</p>
+                <button class="increment-buttons" type="button" (click)="increaseButton()">+</button>
+            </div>
             <button (click)="cartQty()" *ngIf="qtyValue===0" class="add-button" type="button"> <img
                     src="../../../assets/images/icon-cart.svg">Add to cart</button>
             <button (click)="emptyCartQty()" *ngIf="qtyValue>0" class="add-button" type="button"> <img
@@ -39,7 +50,7 @@
             <button (click)="prevImg()" (click)="toggleModal()" class="arrow left"> <img
                     src="../../../assets/images/icon-previous.svg">
             </button>
-            <img (click)="toggleModal()" class="main-img" src="../../../assets/images/image-product-{{numImg}}.jpg"
+            <img (click)="toggleModal()" class="main-img" src="../../../assets/images/image-product-{{numImgModal}}.jpg"
                 alt="img">
             <button (click)="nextImg()" (click)="toggleModal()" class="arrow right"> <img
                     src="../../../assets/images/icon-next.svg">
@@ -47,13 +58,13 @@
         </div>
 
         <div class="small-images-section">
-            <img (click)="toggleModal()" (click)="chosenImg(1)" class="secondary-img"
+            <img (click)="toggleModal()" (click)="chosenImgModal(1)" class="secondary-img"
                 src="../../../assets/images/image-product-1-thumbnail.jpg" alt="img">
-            <img (click)="toggleModal()" (click)="chosenImg(2)" class="secondary-img"
+            <img (click)="toggleModal()" (click)="chosenImgModal(2)" class="secondary-img"
                 src="../../../assets/images/image-product-2-thumbnail.jpg" alt="img">
-            <img (click)="toggleModal()" (click)="chosenImg(3)" class="secondary-img"
+            <img (click)="toggleModal()" (click)="chosenImgModal(3)" class="secondary-img"
                 src="../../../assets/images/image-product-3-thumbnail.jpg" alt="img">
-            <img (click)="toggleModal()" (click)="chosenImg(4)" class="secondary-img"
+            <img (click)="toggleModal()" (click)="chosenImgModal(4)" class="secondary-img"
                 src="../../../assets/images/image-product-4-thumbnail.jpg" alt="img">
         </div>
     </div>

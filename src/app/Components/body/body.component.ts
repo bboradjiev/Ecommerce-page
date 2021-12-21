@@ -9,15 +9,16 @@ import { CartServiceService } from 'src/app/cart-service.service';
 })
 export class BodyComponent implements OnInit {
   numImg = 1;
+  numImgModal = 1;
   initialQty: number = 0;
-  showModal = true;
+  showModal = false;
+  showCart = false
 
   qtySrc!: Subject<number>;
   public qtyValue: number = 0;
 
   constructor(private cart: CartServiceService) {
     this.qtySrc = this.cart.qtySource;
-
     this.qtySrc.subscribe((value) => {
       this.qtyValue = value;
     });
@@ -26,6 +27,10 @@ export class BodyComponent implements OnInit {
 
   chosenImg(num: number) {
     this.numImg = num;
+  }
+
+  chosenImgModal(num: number) {
+    this.numImgModal = num;
   }
 
   decreaseButton() {
@@ -51,13 +56,29 @@ export class BodyComponent implements OnInit {
   }
 
   nextImg() {
-    if (this.numImg < 4) {
-      this.numImg++;
-    }
+    if (this.numImgModal < 4) {
+      this.numImgModal++;
+    } else this.numImgModal = 1;
   }
   prevImg() {
+    if (this.numImgModal > 1) {
+      this.numImgModal--;
+    } else {
+      this.numImgModal = 4;
+    }
+  }
+
+  nextImgMobile() {
+    if (this.numImg < 4) {
+      this.numImg++;
+    } else this.numImg = 1;
+  }
+
+  prevImgMobile() {
     if (this.numImg > 1) {
       this.numImg--;
+    } else {
+      this.numImg = 4;
     }
   }
 }

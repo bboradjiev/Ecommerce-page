@@ -11,6 +11,7 @@ export class CartServiceService {
   get qtySource(): Subject<number> {
     return this.orderedQtySource;
   }
+  
   set qtySource(src: Subject<number>) {
     this.orderedQtySource = src;
   }
@@ -20,4 +21,5 @@ export class CartServiceService {
   changeQty(num: any) {
     this.orderedQtySource.next(num);   
   }
+
 }
